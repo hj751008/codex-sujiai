@@ -1,4 +1,5 @@
 import type { ParentReport } from "@/lib/ai/contracts";
+import type { SessionReportRecord } from "@/lib/supabase/schema";
 
 export const sampleParentReport: ParentReport = {
   learnerName: "수지",
@@ -11,3 +12,15 @@ export const sampleParentReport: ParentReport = {
     "문자 하나를 말로 설명하는 복기 질문",
   ],
 };
+
+export function mapSessionReportRecordToParentReport(
+  record: SessionReportRecord,
+): ParentReport {
+  return {
+    learnerName: record.learner_name,
+    sessionSummary: record.session_summary,
+    blockedConcepts: record.blocked_concepts ?? [],
+    confidenceNotes: record.confidence_notes ?? [],
+    nextRecommendations: record.next_recommendations ?? [],
+  };
+}
