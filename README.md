@@ -25,9 +25,29 @@ npx expo export --platform android
 
 Set these in Expo extra config before live Supabase wiring:
 
-- `supabaseUrl`
-- `supabaseAnonKey`
-- `openAiModel`
+- `EXPO_PUBLIC_SUPABASE_URL`
+- `EXPO_PUBLIC_SUPABASE_ANON_KEY`
+- `EXPO_PUBLIC_OPENAI_MODEL`
+- `EXPO_PUBLIC_VERIFY_LEARNER_PIN_FUNCTION`
+- `EXPO_PUBLIC_TUTOR_SESSION_FUNCTION`
+
+## Supabase Runtime
+
+This repository now includes the runtime shape for live wiring:
+
+- SQL migration: `supabase/migrations/20260408_sujimathai_runtime.sql`
+- Edge Function: `supabase/functions/verify-learner-pin`
+- Edge Function: `supabase/functions/tutor-session-turn`
+
+Expected rollout order:
+
+1. Apply the SQL migration to the target Supabase project.
+2. Set secret env vars in Supabase:
+   - `OPENAI_API_KEY`
+   - `OPENAI_MODEL`
+3. Deploy both Edge Functions.
+4. Set the Expo public env vars above.
+5. Sign in as parent, create learner, then verify learner PIN on device.
 
 ## Notes
 
