@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "SujiMathAI",
+    "slug": "codex-sujiai",
+    "scheme": "sujimathai",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.hj751008.sujimathai"
+    },
+    "experiments": {
+      "typedRoutes": true
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
